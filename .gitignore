@@ -1,0 +1,25 @@
+# Database files
+*.mdf
+*.ldf
+*.bak
+
+# OS files
+.DS_Store
+Thumbs.db
+*.tmp
+
+# Lock files
+.~lock.*
+~$*
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Docker volumes data
+sqlserver_*/

@@ -1,0 +1,89 @@
+version: '3.8'
+
+services:
+  # Site 1 - Hà Nội (Publisher)
+  sqlserver-hanoi:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: SITE_HANOI
+    hostname: SITE-HANOI
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Admin@123456
+      - MSSQL_PID=Developer
+      - MSSQL_AGENT_ENABLED=true
+    ports:
+      - "1433:1433"
+    volumes:
+      - hanoi-data:/var/opt/mssql
+      - ./scripts:/scripts
+    networks:
+      sql_network:
+        ipv4_address: 172.20.0.101
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "/opt/mssql-tools/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "Admin@123456", "-Q", "SELECT 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Site 2 - Đà Nẵng (Subscriber)
+  sqlserver-danang:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: SITE_DANANG
+    hostname: SITE-DANANG
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Admin@123456
+      - MSSQL_PID=Developer
+      - MSSQL_AGENT_ENABLED=true
+    ports:
+      - "1434:1433"
+    volumes:
+      - danang-data:/var/opt/mssql
+      - ./scripts:/scripts
+    networks:
+      sql_network:
+        ipv4_address: 172.20.0.102
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "/opt/mssql-tools/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "Admin@123456", "-Q", "SELECT 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  # Site 3 - Sài Gòn (Subscriber)
+  sqlserver-saigon:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: SITE_SAIGON
+    hostname: SITE-SAIGON
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Admin@123456
+      - MSSQL_PID=Developer
+      - MSSQL_AGENT_ENABLED=true
+    ports:
+      - "1435:1433"
+    volumes:
+      - saigon-data:/var/opt/mssql
+      - ./scripts:/scripts
+    networks:
+      sql_network:
+        ipv4_address: 172.20.0.103
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "/opt/mssql-tools/bin/sqlcmd", "-S", "localhost", "-U", "sa", "-P", "Admin@123456", "-Q", "SELECT 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+networks:
+  sql_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+
+volumes:
+  hanoi-data:
+  danang-data:
+  saigon-data:

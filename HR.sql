@@ -1,5 +1,16 @@
+-- Create database if not exists
+IF NOT EXISTS (SELECT * FROM sys.databases WHERE name = 'QuanLyNhanSu')
+BEGIN
+    CREATE DATABASE QuanLyNhanSu;
+END
+GO
+
+USE QuanLyNhanSu;
+GO
+
 ALTER DATABASE QuanLyNhanSu
 COLLATE Latin1_General_CI_AS;
+GO
 
 CREATE TABLE TruSoChinh(
 ID_TruSoChinh VARCHAR(255),
