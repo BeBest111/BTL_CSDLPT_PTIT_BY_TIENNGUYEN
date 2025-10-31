@@ -349,23 +349,21 @@ WHERE NgayCapNhat < DATEADD(MONTH, -3, GETDATE());
 
 **Nhóm 5 - Quản lý Nhân viên**
 
-- Thành viên 1: [Họ tên]
-- Thành viên 2: [Họ tên]
-- Thành viên 3: [Họ tên]
-- Thành viên 4: [Họ tên]
-- Thành viên 5: [Họ tên]
-
-**Giảng viên hướng dẫn:** [Tên giảng viên]
+- Thành viên 1: Nguyễn Minh Tiến
+- Thành viên 2: Nguyễn Đăng Huân
+- Thành viên 3: Đỗ Xuân Kiên
+- Thành viên 4: Nguyễn Huy Hoàng
+- Thành viên 5: Bùi Thị Ngân
+- Thành viên 6: Đồng Duy Phúc
+- Thành viên 7: Hoàng Minh Tiến
+**Giảng viên hướng dẫn:** [Nguyễn Thị Hà]
 
 ---
 
 ## 📞 LIÊN HỆ
 
-- 📧 Email: support@orgasm.com
-- 📱 Hotline: 0350899999
-- 🏢 Công ty: ORGASM Corporation
-- 🌐 Website: [URL]
-
+- 📧 Email: iamaaiguy.com
+- 📱 Hotline: 0325875466
 ---
 
 ## 📜 LICENSE
